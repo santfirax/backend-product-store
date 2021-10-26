@@ -37,7 +37,7 @@
         "memoryReservation": null,
         "volumesFrom": [],
         "stopTimeout": null,
-        "image": "543159431708.dkr.ecr.us-east-2.amazonaws.com/smolano:12f78a4257746c3297ad16c9882f59d831f04ca3",
+        "image": "543159431708.dkr.ecr.us-east-2.amazonaws.com/smolano:backend-product-store-prod",
         "startTimeout": null,
         "firelensConfiguration": null,
         "dependsOn": null,
