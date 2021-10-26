@@ -1,0 +1,12 @@
+{
+    "name": "backend-product-store",
+    "description": "Backend product store project",
+    "repository": "https://github.com/santfirax/backend-product-store",
+    "addons": ["heroku-postgresql:hobby-dev"],
+    "env": {
+      "USE_NPM_INSTALL": {
+      "description": "Use NPM install",
+      "value": "true"
+    }
+    }
+}
