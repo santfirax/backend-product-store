@@ -37,7 +37,7 @@ import { ProductsModule } from './products/products.module';
       synchronize: true,
       keepConnectionAlive: true,
       extra: {
-        ssl: false,
+        ssl: true,
       },
     }),
 
