@@ -33,11 +33,11 @@ import { ProductsModule } from './products/products.module';
         process.env.DB_NAME ||
         'products',
       entities: [Product],
-      dropSchema: true,
+      dropSchema: false,
       synchronize: true,
       keepConnectionAlive: true,
       extra: {
-        ssl: true,
+        ssl: process.env.DATABASE_URL ? true : false,
       },
     }),
 
