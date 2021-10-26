@@ -5,15 +5,7 @@
       {
         "dnsSearchDomains": null,
         "environmentFiles": null,
-        "logConfiguration": {
-          "logDriver": "awslogs",
-          "secretOptions": null,
-          "options": {
-            "awslogs-group": "/ecs/backend-product-store-task-definition",
-            "awslogs-region": "us-east-2",
-            "awslogs-stream-prefix": "ecs"
-          }
-        },
+        "logConfiguration": null,
         "entryPoint": null,
         "portMappings": [
           {
@@ -64,32 +56,14 @@
       "EC2",
       "FARGATE"
     ],
-    "taskDefinitionArn": "arn:aws:ecs:us-east-2:543159431708:task-definition/backend-product-store-task-definition:1",
+    "taskDefinitionArn": "arn:aws:ecs:us-east-2:543159431708:task-definition/backend-product-store-task-definition:2",
     "family": "backend-product-store-task-definition",
     "requiresAttributes": [
       {
         "targetId": null,
         "targetType": null,
         "value": null,
-        "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
-      },
-      {
-        "targetId": null,
-        "targetType": null,
-        "value": null,
-        "name": "ecs.capability.execution-role-awslogs"
-      },
-      {
-        "targetId": null,
-        "targetType": null,
-        "value": null,
         "name": "com.amazonaws.ecs.capability.ecr-auth"
-      },
-      {
-        "targetId": null,
-        "targetType": null,
-        "value": null,
-        "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
       },
       {
         "targetId": null,
@@ -112,11 +86,11 @@
     ],
     "pidMode": null,
     "requiresCompatibilities": [
-      "FARGATE"
+      "EC2"
     ],
     "networkMode": "awsvpc",
     "cpu": "1024",
-    "revision": 1,
+    "revision": 2,
     "status": "ACTIVE",
     "inferenceAccelerators": null,
     "proxyConfiguration": null,
