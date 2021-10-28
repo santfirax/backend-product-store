@@ -37,7 +37,8 @@ import { ProductsModule } from './products/products.module';
       synchronize: true,
       keepConnectionAlive: true,
       extra: {
-        ssl: process.env.DATABASE_URL ? true : false,
+        // ssl: process.env.DATABASE_URL ? true : false,
+        ssl: false,
       },
     }),
 
