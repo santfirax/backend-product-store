@@ -38,6 +38,7 @@ import { ProductsModule } from './products/products.module';
       keepConnectionAlive: true,
       extra: {
         ssl: process.env.DATABASE_URL ? true : false,
+        rejectUnauthorized: false
       },
     }),
 
