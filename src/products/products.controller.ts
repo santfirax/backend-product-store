@@ -1,36 +1,35 @@
-import {
-  Body,
-  Controller,
-  Delete,
-  Get,
-  HttpCode,
-  Param,
-  Post,
-} from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
-import { ProductDTO } from './product.dto';
+import { Controller, Get, Post, Body, Patch, Param, Delete, HttpCode } from '@nestjs/common';
 import { ProductsService } from './products.service';
+import { CreateProductDto } from './dto/create-product.dto';
+import { UpdateProductDto } from './dto/update-product.dto';
 
-@Controller('products')
-@ApiTags('products')
+@Controller('/v1/products')
 export class ProductsController {
-  constructor(private readonly productService: ProductsService) {}
-  @Get()
-  async findAllProducts() {
-    return await this.productService.findAllProducts();
-  }
-  @Get(':productId')
-  async findProductById(@Param('productId') productId: number) {
-    return await this.productService.findOneProductById(productId);
-  }
+  constructor(private readonly productsService: ProductsService) {}
+
   @Post()
-  @HttpCode(200)
-  async create(@Body() productDTO: ProductDTO) {
-    return await this.productService.createProduct(productDTO);
+  @HttpCode(201)
+  async create(@Body() createProductDto: CreateProductDto) {
+    return await this.productsService.create(createProductDto);
   }
-  @Delete()
-  @HttpCode(204)
-  async delete(@Param('productId') productId: number) {
-    return await this.productService.deleteProductById(productId);
+
+  @Get()
+  async findAll() {
+    return await this.productsService.findAll();
+  }
+
+  @Get(':productName')
+  async findOne(@Param('productName') productName: string) {
+    return await this.productsService.findOneProductByName(productName);
+  }
+
+  @Patch(':id')
+  async update(@Param('id') id: string, @Body() updateProductDto: UpdateProductDto) {
+    return await this.productsService.update(+id, updateProductDto);
+  }
+
+  @Delete(':productName')
+  async remove(@Param('productName') productName: string) {
+    return await this.productsService.removeProductByName(productName);
   }
 }

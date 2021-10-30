@@ -1,7 +1,9 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Product } from './products/product.entity';
+import { Product } from './products/entities/product.entity';
 import { ProductsModule } from './products/products.module';
+import { CategoriesModule } from './categories/categories.module';
+import { Category } from './categories/entities/category.entity';
 
 @Module({
   imports: [
@@ -32,8 +34,8 @@ import { ProductsModule } from './products/products.module';
         (process.env.DATABASE_URL && process.env.DATABASE_URL.split('/')[3]) ||
         process.env.DB_NAME ||
         'products',
-      entities: [Product],
-      dropSchema: false,
+      entities: [Product,Category],
+      dropSchema: true,
       synchronize: true,
       keepConnectionAlive: true,
       extra: {
@@ -43,6 +45,8 @@ import { ProductsModule } from './products/products.module';
     }),
 
     ProductsModule,
+
+    CategoriesModule,
   ],
 })
 export class AppModule {}
