@@ -1,18 +1,14 @@
 import { Product } from 'src/products/entities/product.entity';
 import {
   Column,
-  Entity,
-  JoinTable, ManyToOne,
-  PrimaryGeneratedColumn
+  Entity, ManyToMany, PrimaryGeneratedColumn
 } from 'typeorm';
 @Entity()
 export class Category {
   @PrimaryGeneratedColumn()
   id: number;
-  @Column({ unique: true })
+  @Column({unique:true})
   type: string;
-  @ManyToOne(type=> Product,product=>product.category)
-  @JoinTable()
+  @ManyToMany((type) => Product, (product) => product.categories)
   products: Product[];
-
 }

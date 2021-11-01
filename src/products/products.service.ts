@@ -15,14 +15,15 @@ export class ProductsService {
   async create(createProductDto: CreateProductDto): Promise<CreateProductDto> {
     const product: Product = new Product();
     product.name = createProductDto.name;
-    product.barCode = createProductDto.name;
+    product.barCode = createProductDto.barCode;
+    product.categories = createProductDto.categories;
     this.logger.log(`Creating product with name:${product.name}`);
-    return await this.productRepository.create(product);
+    return await this.productRepository.save(product);
   }
 
   async findAll(): Promise<Product[]> {
     this.logger.log(`Getting all products`);
-    return await this.productRepository.find({ relations: ['category'] });
+    return await this.productRepository.find({relations:["categories"]});
   }
 
   async findOneProductByName(name: string): Promise<Product> {

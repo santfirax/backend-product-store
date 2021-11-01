@@ -1,6 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
+import { CategoryFilter } from './query.filter';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
@@ -15,6 +16,7 @@ async function bootstrap() {
   const swaggerDocs = SwaggerModule.createDocument(app, swaggerOptions);
   SwaggerModule.setup("docs",app,swaggerDocs);
   app.enableCors();
+  app.useGlobalFilters(new CategoryFilter())
   await app.listen(process.env.PORT || 3000);
 }
 bootstrap();

@@ -4,6 +4,8 @@ import { Product } from './products/entities/product.entity';
 import { ProductsModule } from './products/products.module';
 import { CategoriesModule } from './categories/categories.module';
 import { Category } from './categories/entities/category.entity';
+import { CupboardModule } from './cupboard/cupboard.module';
+import { Cupboard } from './cupboard/entities/cupboard.entity';
 
 @Module({
   imports: [
@@ -34,7 +36,7 @@ import { Category } from './categories/entities/category.entity';
         (process.env.DATABASE_URL && process.env.DATABASE_URL.split('/')[3]) ||
         process.env.DB_NAME ||
         'products',
-      entities: [Product,Category],
+      entities: [Product,Category,Cupboard],
       dropSchema: true,
       synchronize: true,
       keepConnectionAlive: true,
@@ -47,6 +49,8 @@ import { Category } from './categories/entities/category.entity';
     ProductsModule,
 
     CategoriesModule,
+
+    CupboardModule,
   ],
 })
 export class AppModule {}
